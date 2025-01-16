@@ -1,6 +1,6 @@
 return {
     {
-        url = "mfussenegger/nvim-dap",
+        "mfussenegger/nvim-dap",
         name = "nvim-dap",
         dependencies = {
             {

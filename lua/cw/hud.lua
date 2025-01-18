@@ -35,6 +35,7 @@ return {
             scope = { enabled = false },
         },
     },
+    { "lukas-reineke/virt-column.nvim", opts = {} },
     {
         "nvim-neo-tree/neo-tree.nvim",
         version = "*",

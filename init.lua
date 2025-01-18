@@ -23,6 +23,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.swapfile = false
+vim.opt.colorcolumn = "+2"
 
 vim.g.diagnostics_visible = true
 vim.diagnostic.config({ virtual_text = true })
@@ -67,6 +68,13 @@ vim.keymap.set("n", "<leader>iv", function()
         vim.diagnostic.config({ virtual_text = true })
     end
 end, { desc = "Toggle diagnostics virtual text" })
+vim.keymap.set("n", "<leader>il", function()
+    if vim.opt.colorcolumn then
+        vim.opt.colorcolumn = ""
+    else
+        vim.opt.colorcolumn = "+2"
+    end
+end, { desc = "Toggle linewrap guide" })
 vim.keymap.set("n", "<leader>in", vim.diagnostic.goto_next, { desc = "Jump to Next Diagnostic" })
 vim.keymap.set("n", "<leader>ip", vim.diagnostic.goto_prev, { desc = "Jump to Prev Diagnostic" })
 vim.keymap.set("n", "<leader>ii", vim.diagnostic.open_float, { desc = "Get curr diagnostic" })

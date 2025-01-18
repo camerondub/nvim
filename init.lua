@@ -72,7 +72,7 @@ vim.keymap.set("n", "<leader>ip", vim.diagnostic.goto_prev, { desc = "Jump to Pr
 vim.keymap.set("n", "<leader>ii", vim.diagnostic.open_float, { desc = "Get curr diagnostic" })
 vim.keymap.set("n", "<leader>ro", ":view<CR>", { desc = "Set file to read-only" })
 vim.keymap.set("n", "<leader>rw", ":edit<CR>", { desc = "Set file to read/write" })
-vim.keymap.set("n", "<leader>m", ":Mason", { desc = "Open Mason window" })
+vim.keymap.set("n", "<leader>m", ":Mason<CR>", { desc = "Open Mason window" })
 
 -- Autocommands
 vim.api.nvim_create_autocmd("TextYankPost", {

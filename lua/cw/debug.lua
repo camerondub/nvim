@@ -38,7 +38,7 @@ return {
                 { "<leader>db", dap.toggle_breakpoint, desc = "Debug: Toggle Breakpoint" },
                 { "<leader>de", dap.terminate, desc = "Debug: End" },
                 {
-                    "<leader>dB",
+                    "<leader>db",
                     function()
                         dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
                     end,

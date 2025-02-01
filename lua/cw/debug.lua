@@ -61,14 +61,15 @@ return {
             dap.listeners.after.event_initialized["dapui_config"] = dapui.open
             dap.listeners.before.event_terminated["dapui_config"] = dapui.close
             dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+            -- language-specific debugger config
+            dap.adapters.python = vim.g.dap_adapter_python
+            dap.configurations.python = vim.g.dap_config_python
+
         end,
     },
     {
         "jay-babu/mason-nvim-dap.nvim",
-        dependencies = { "nvim-dap" },
-    },
-    {
-        "mfussenegger/nvim-dap-python",
         dependencies = { "nvim-dap" },
     },
 }

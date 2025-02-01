@@ -114,6 +114,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- Load project-specific config from working directory
+if vim.uv.fs_stat(".nvim.lua") then
+    vim.cmd("source .nvim.lua")
+end
+
 -- Configure plugins
 require("lazy").setup({
     require("cw.find"),
@@ -144,8 +149,3 @@ require("lazy").setup({
         },
     },
 })
-
--- Load project-specific config from working directory
-if vim.uv.fs_stat(".nvim.lua") then
-    vim.cmd("source .nvim.lua")
-end

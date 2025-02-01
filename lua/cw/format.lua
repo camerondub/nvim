@@ -31,8 +31,13 @@ return {
             formatters_by_ft = {
                 lua = { 'stylua' },
                 python = { "isort", "black" },
-                javascript = { "prettierd", "prettier", stop_after_first = true },
+                javascript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescript = { "prettier" },
+                typescriptreact = { "prettier" },
+                css = { "prettier" },
             },
+            log_level = vim.log.levels.ERROR,
         },
     }, {
         'nvim-treesitter/nvim-treesitter', -- highlight, edit, and navigate code

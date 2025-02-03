@@ -34,6 +34,7 @@ return {
                 { "<leader>dc", dap.continue, desc = "Debug: Start/Continue" },
                 { "<leader>di", dap.step_into, desc = "Debug: Step Into" },
                 { "<leader>dv", dap.step_over, desc = "Debug: Step Over" },
+                { "<space>", dap.step_over, desc = "Debug: Step Over" },
                 { "<leader>do", dap.step_out, desc = "Debug: Step Out" },
                 { "<leader>db", dap.toggle_breakpoint, desc = "Debug: Toggle Breakpoint" },
                 { "<leader>de", dap.terminate, desc = "Debug: End" },
@@ -65,7 +66,6 @@ return {
             -- language-specific debugger config
             dap.adapters.python = vim.g.dap_adapter_python
             dap.configurations.python = vim.g.dap_config_python
-
         end,
     },
     {

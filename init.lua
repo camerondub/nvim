@@ -36,6 +36,7 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = " "
 vim.keymap.set("n", "<C-j>", "<C-d>", { desc = "Scroll down half screen" })
 vim.keymap.set("n", "<C-k>", "<C-u>", { desc = "Scroll up half screen" })
+vim.keymap.set("n", "g;", ",", { desc = "Reverse char search" })
 vim.keymap.set("n", "gq", "<C-w>q", { desc = "Close window" })
 vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Change window left" })
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Change window down" })

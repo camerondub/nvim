@@ -33,6 +33,7 @@ return {
         opts = {
             enabled = false,
             scope = { enabled = false },
+            indent = { char = "┆" },
         },
     },
     { "lukas-reineke/virt-column.nvim", opts = {} },

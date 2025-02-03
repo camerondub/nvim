@@ -64,8 +64,44 @@ return {
             dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
             -- language-specific debugger config
-            dap.adapters.python = vim.g.dap_adapter_python
-            dap.configurations.python = vim.g.dap_config_python
+            if vim.g.dap_python_opt ~= nil then
+                dap.adapters.python = vim.g.dap_python_opt.adapter
+                dap.configurations.python = vim.g.dap_python_opt.configuration
+            else
+                dap.adapters.python = {
+                    type = "server",
+                    server = "localhost",
+                    port = 5678,
+                }
+                dap.configurations.python = {
+                    {
+                        type = "python",
+                        request = "attach",
+                        name = "Attach to Python Debugger",
+                    },
+                }
+            end
+
+            local node_langs = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+            for _, lang in ipairs(node_langs) do
+                if vim.g.dap_js_opt ~= nil then
+                    dap.adapters[lang] = vim.g.dap_js_opt.adapter
+                    dap.configurations[lang] = vim.g.dap_js_opt.configuration
+                else
+                    dap.adapters[lang] = {
+                        type = "server",
+                        server = "localhost",
+                        port = 9230,
+                    }
+                    dap.configurations[lang] = {
+                        {
+                            type = lang,
+                            request = "attach",
+                            name = "Attach to Node Debugger",
+                        },
+                    }
+                end
+            end
         end,
     },
     {

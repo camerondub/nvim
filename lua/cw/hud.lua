@@ -81,7 +81,7 @@ return {
             { "<leader>gs", ":sp<CR>:Gedit :<CR>", desc = "" },
             { "<leader>gb", ":Git blame<CR>", desc = "Git Blame" },
             { "<leader>gu", ":Git push<CR>", desc = "Git Up" },
-            { "<leader>gd", ":Git pull --ff-only<CR>", desc = "Git Down" },
+            { "<leader>gd", ":Git down<CR>", desc = "Git Down" },
             { "<leader>gi", ":Gdiffsplit!<CR>", desc = "Git Diff" },
             { "<leader>gl", ":Git log -p<CR>", desc = "Git Log" },
             { "<leader>gh", ":0Gclog<CR>", desc = "Git History" },

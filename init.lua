@@ -128,6 +128,7 @@ require("lazy").setup({
     require("cw.lsp"),
     require("cw.complete"),
     require("cw.lint"),
+    require("cw.treesitter"),
     require("cw.format"),
     require("cw.debug"),
     require("cw.hud"),

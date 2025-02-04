@@ -27,6 +27,8 @@ vim.opt.swapfile = false
 vim.g.diagnostics_visible = true
 vim.diagnostic.config({ virtual_text = true })
 
+vim.g.yaml_indent_multiline_scalar = 1 -- fix autoindent for multiline yaml scalars
+
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])

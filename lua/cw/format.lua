@@ -1,16 +1,16 @@
 return {
     {
-        'stevearc/conform.nvim', -- auto formatting
-        event = { 'BufWritePre' },
-        cmd = { 'ConformInfo' },
+        "stevearc/conform.nvim", -- auto formatting
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
         keys = {
             {
-                '<leader>f',
+                "<leader>f",
                 function()
-                    require('conform').format { async = true, lsp_format = 'fallback' }
+                    require("conform").format({ async = true, lsp_format = "fallback" })
                 end,
-                mode = '',
-                desc = '[F]ormat buffer',
+                mode = "",
+                desc = "[F]ormat buffer",
             },
         },
         opts = {
@@ -33,7 +33,7 @@ return {
                 }
             end,
             formatters_by_ft = {
-                lua = { 'stylua' },
+                lua = { "stylua" },
                 python = { "isort", "black" },
                 javascript = { "prettier" },
                 javascriptreact = { "prettier" },
@@ -43,19 +43,28 @@ return {
             },
             log_level = vim.log.levels.ERROR,
         },
-    }, {
-        'nvim-treesitter/nvim-treesitter', -- highlight, edit, and navigate code
-        build = ':TSUpdate',
-        main = 'nvim-treesitter.configs',
+    },
+    {
+        "nvim-treesitter/nvim-treesitter", -- highlight, edit, and navigate code
+        build = ":TSUpdate",
+        main = "nvim-treesitter.configs",
         opts = {
             ensure_installed = {
-                'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline',
-                'query', 'vim', 'vimdoc'
+                "bash",
+                "c",
+                "diff",
+                "html",
+                "lua",
+                "luadoc",
+                "markdown",
+                "markdown_inline",
+                "query",
+                "vim",
+                "vimdoc",
             },
             auto_install = true,
             highlight = {
                 enable = true,
-                additional_vim_regex_highlighting = { 'ruby' },
             },
             indent = { enable = true, disable = { "yaml" } },
         },

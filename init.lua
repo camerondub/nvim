@@ -56,9 +56,11 @@ vim.keymap.set("n", "<leader>;", "<cmd>nohlsearch<CR>", { desc = "Remove search 
 vim.keymap.set("n", "<leader>cn", ":lne<CR>", { desc = "Next location" })
 vim.keymap.set("n", "<leader>cp", ":lpr<CR>", { desc = "Prev location" })
 vim.keymap.set("n", "<leader>cc", ":ll<CR>", { desc = "Curr location" })
+vim.keymap.set("n", "<leader>cq", ":lcl<CR>", { desc = "Curr location" })
 vim.keymap.set("n", "<leader>qn", ":cne<CR>", { desc = "Next Quickfix" })
 vim.keymap.set("n", "<leader>qp", ":cpr<CR>", { desc = "Prev Quickfix" })
 vim.keymap.set("n", "<leader>qc", ":cl<CR>", { desc = "Curr Quickfix" })
+vim.keymap.set("n", "<leader>qq", ":ccl<CR>", { desc = "Curr Quickfix" })
 vim.keymap.set(
     "n",
     "<leader>io",

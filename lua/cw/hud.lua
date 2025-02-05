@@ -91,7 +91,7 @@ return {
             { "<leader>gd", ":Git down<CR>", desc = "Git Down" },
             { "<leader>gi", ":Gvdiffsplit!<CR>", desc = "Git Diff" },
             { "<leader>gl", ":Git log -p -n 20<CR>", desc = "Git Log" },
-            { "<leader>gh", ":0Gclog<CR>", desc = "Git History" },
+            { "<leader>gh", ":Git log --oneline -n 100<CR>", desc = "Git History" },
             { "<leader>gm", ":Git mergetool<CR>", desc = "Git Merge Tool" },
 
             { "<leader>du", ":diffupdate<CR>", desc = "Diff Update" },

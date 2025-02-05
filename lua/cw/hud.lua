@@ -90,7 +90,7 @@ return {
             { "<leader>gu", ":Git push<CR>", desc = "Git Up" },
             { "<leader>gd", ":Git down<CR>", desc = "Git Down" },
             { "<leader>gi", ":Gvdiffsplit!<CR>", desc = "Git Diff" },
-            { "<leader>gl", ":Git log -p<CR>", desc = "Git Log" },
+            { "<leader>gl", ":Git log -p -n 20<CR>", desc = "Git Log" },
             { "<leader>gh", ":0Gclog<CR>", desc = "Git History" },
             { "<leader>gm", ":Git mergetool<CR>", desc = "Git Merge Tool" },
 

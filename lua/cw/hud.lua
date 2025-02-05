@@ -58,6 +58,13 @@ return {
                 },
             },
         },
+        config = function(_, opts)
+            local neotree = require("neo-tree")
+            neotree.setup(opts)
+            vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", { fg = "#586e75" })
+            vim.api.nvim_set_hl(0, "NeoTreeFloatTitle", { fg = "#586e75" })
+            vim.api.nvim_set_hl(0, "NeoTreeTitleBar", { fg = "#586e75" })
+        end,
     },
     {
         "gcmt/taboo.vim", -- tab control

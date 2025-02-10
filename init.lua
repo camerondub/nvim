@@ -24,8 +24,8 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.swapfile = false
 
-vim.g.diagnostics_visible = true
-vim.diagnostic.config({ virtual_text = true })
+vim.g.diagnostics_visible = false
+vim.diagnostic.config({ virtual_text = vim.g.diagnostics_visible })
 
 vim.g.yaml_indent_multiline_scalar = 1 -- fix autoindent for multiline yaml scalars
 

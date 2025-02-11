@@ -107,7 +107,7 @@ return {
                     dap.adapters[lang] = {
                         type = "server",
                         server = "localhost",
-                        port = 9230,
+                        port = 9222,
                     }
                     dap.configurations[lang] = {
                         {
@@ -124,6 +124,13 @@ return {
                             protocol = "inspector",
                             sourceMaps = true,
                             userDataDir = false,
+                            runtimeExecutable = "/usr/bin/chromium-browser",
+                        },
+                        {
+                            type = lang,
+                            request = "attach",
+                            name = "Attach & Debug Chrome",
+                            port = 9222,
                         },
                     }
                 end

@@ -16,7 +16,7 @@ return {
                     lint.try_lint()
                 end,
             })
-            lint.linters.pylint.cmd = "python"
+            lint.linters.pylint.cmd = "python3"
             lint.linters.pylint.args = {
                 "-m",
                 "pylint",

@@ -69,7 +69,9 @@ return {
             })
             local types = require("cmp.types")
             vim.keymap.set("n", "<leader>pe", function()
-                cmp.setup({ completion = { autocomplete = { types.cmp.TriggerEvent.TextChanged } } })
+                cmp.setup({
+                    completion = { autocomplete = { types.cmp.TriggerEvent.TextChanged } },
+                })
                 print("Enabled autocompletion")
             end, { desc = "Enable autocompletion" })
             vim.keymap.set("n", "<leader>pd", function()

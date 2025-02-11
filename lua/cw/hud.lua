@@ -98,6 +98,9 @@ return {
             { "<leader>dg", ":diffget ", desc = "Diff Get {BufSpec}" },
         },
     },
+    "tpope/vim-dadbod",
+    "kristijanhusak/vim-dadbod-completion",
+    "kristijanhusak/vim-dadbod-ui",
     {
         "stevearc/aerial.nvim",
         opts = {},

@@ -22,7 +22,7 @@ return {
                         luasnip.lsp_expand(args.body)
                     end,
                 },
-                completion = { completeopt = "menu,menuone,noinsert", autocomplete = false },
+                completion = { completeopt = "menu,menuone,noinsert" },
 
                 mapping = cmp.mapping.preset.insert({
                     ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -59,6 +59,15 @@ return {
                     { name = "buffer" },
                 },
             })
+            local types = require("cmp.types")
+            vim.keymap.set("n", "<leader>pe", function()
+                cmp.setup({ completion = { autocomplete = { types.cmp.TriggerEvent.TextChanged } } })
+                print("Enabled autocompletion")
+            end, { desc = "Enable autocompletion" })
+            vim.keymap.set("n", "<leader>pd", function()
+                cmp.setup({ completion = { autocomplete = false } })
+                print("Disabled autocompletion")
+            end, { desc = "Disable autocompletion" })
         end,
     },
 }

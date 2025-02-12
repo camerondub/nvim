@@ -50,24 +50,6 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "<C-j>", "<C-d>", { desc = "Scroll down half screen" })
 vim.keymap.set("n", "<C-k>", "<C-u>", { desc = "Scroll up half screen" })
 vim.keymap.set("n", "g;", ",", { desc = "Reverse char search" })
-vim.keymap.set("n", "gq", "<C-w>q", { desc = "Close window" })
-vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Change window left" })
-vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Change window down" })
-vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Change window up" })
-vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Change window right" })
-vim.keymap.set("n", "<leader>wH", "<C-w>H", { desc = "Move window to Left" })
-vim.keymap.set("n", "<leader>wJ", "<C-w>J", { desc = "Move window to Bot" })
-vim.keymap.set("n", "<leader>wK", "<C-w>K", { desc = "Move window to Top" })
-vim.keymap.set("n", "<leader>wL", "<C-w>L", { desc = "Move window to Right" })
-vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally" })
-vim.keymap.set("n", "<leader>wo", "<C-w>o", { desc = "Close all other windows" })
-vim.keymap.set("n", "<leader>wt", "<C-w>t", { desc = "Go to top window" })
-vim.keymap.set("n", "<leader>wb", "<C-w>b", { desc = "Go to bottom window" })
-vim.keymap.set("n", "<leader>wp", "<C-w>p", { desc = "Go to prev window" })
-vim.keymap.set("n", "<leader>ww", function()
-    return vim.v.count .. "<C-w>w"
-end, { expr = true, desc = "Go to Nth window" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<leader>;", "<cmd>nohlsearch<CR>", { desc = "Remove search highlight" })
 vim.keymap.set("n", "<leader>cn", ":lne<CR>", { desc = "Next location" })
@@ -119,6 +101,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- Modular configuration
+require("config.window")
+
 -- Autoformatting and autowrapping
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
@@ -150,17 +135,17 @@ end
 
 -- Configure plugins
 require("lazy").setup({
-    require("cw.find"),
-    require("cw.lsp"),
-    require("cw.complete"),
-    require("cw.lint"),
-    require("cw.treesitter"),
-    require("cw.format"),
-    require("cw.debug"),
-    require("cw.filetree"),
-    require("cw.hud"),
-    require("cw.style"),
-    require("cw.vi"),
+    require("lazyplugin.find"),
+    require("lazyplugin.lsp"),
+    require("lazyplugin.complete"),
+    require("lazyplugin.lint"),
+    require("lazyplugin.treesitter"),
+    require("lazyplugin.format"),
+    require("lazyplugin.debug"),
+    require("lazyplugin.filetree"),
+    require("lazyplugin.hud"),
+    require("lazyplugin.style"),
+    require("lazyplugin.vi"),
 }, {
     ui = {
         icons = {

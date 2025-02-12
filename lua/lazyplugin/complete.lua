@@ -12,6 +12,7 @@ return {
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-buffer",
         },
+        lazy = false,
         config = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
@@ -23,7 +24,7 @@ return {
                         luasnip.lsp_expand(args.body)
                     end,
                 },
-                completion = { completeopt = "menu,menuone,noinsert" },
+                completion = { completeopt = "menu,menuone,noselect" },
 
                 mapping = cmp.mapping.preset.insert({
                     ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -49,10 +50,10 @@ return {
                         name = "lazydev",
                         group_index = 0,
                     },
-                    { name = "buffer" },
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
                     { name = "path" },
+                    { name = "buffer" },
                     { name = "vim-dadbod-completion" },
                 }),
             })

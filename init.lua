@@ -157,6 +157,7 @@ require("lazy").setup({
     require("cw.treesitter"),
     require("cw.format"),
     require("cw.debug"),
+    require("cw.filetree"),
     require("cw.hud"),
     require("cw.style"),
     require("cw.vi"),

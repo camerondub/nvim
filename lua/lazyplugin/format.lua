@@ -5,17 +5,27 @@ return {
         cmd = { "ConformInfo" },
         keys = {
             {
-                "<leader>f",
+                "<leader>ff",
                 function()
                     require("conform").format({ async = true, lsp_format = "fallback" })
                 end,
-                mode = "",
                 desc = "[F]ormat buffer",
+            },
+            {
+                "<leader>ft",
+                function()
+                    vim.b.disable_autoformat = not vim.b.disable_autoformat
+                    vim.notify("vim.b.disable_autoformat = " .. tostring(vim.b.disable_autoformat))
+                end,
+                desc = "Toggle autoformatting",
             },
         },
         opts = {
             notify_on_error = false,
             format_on_save = function(bufnr)
+                if vim.b[bufnr].disable_autoformat then
+                    return
+                end
                 local disable_filetypes = { c = true, cpp = true }
                 local fname = vim.fn.expand("%")
                 local fugitive_prefix = "fugitive:///"

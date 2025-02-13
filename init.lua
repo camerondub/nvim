@@ -24,20 +24,6 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.swapfile = false
 
-vim.diagnostic.config({
-    virtual_text = {
-        severity = { min = vim.diagnostic.severity.WARN },
-    },
-    signs = {
-        severity = { min = vim.diagnostic.severity.WARN },
-    },
-    underline = {
-        severity = { min = vim.diagnostic.severity.WARN },
-    },
-})
-vim.g.diagnostics_visible = false
-vim.diagnostic.config({ virtual_text = vim.g.diagnostics_visible })
-
 vim.g.yaml_indent_multiline_scalar = 1 -- fix autoindent for multiline yaml scalars
 
 -- Undercurl
@@ -47,34 +33,11 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 -- Keymaps
 vim.g.mapleader = ","
 vim.g.maplocalleader = " "
+vim.keymap.set("n", "<leader>;", "<cmd>nohlsearch<CR>", { desc = "Remove search highlight" })
 vim.keymap.set("n", "<C-j>", "<C-d>", { desc = "Scroll down half screen" })
 vim.keymap.set("n", "<C-k>", "<C-u>", { desc = "Scroll up half screen" })
 vim.keymap.set("n", "g;", ",", { desc = "Reverse char search" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-vim.keymap.set("n", "<leader>;", "<cmd>nohlsearch<CR>", { desc = "Remove search highlight" })
-vim.keymap.set("n", "<leader>cn", ":lne<CR>", { desc = "Next location" })
-vim.keymap.set("n", "<leader>cp", ":lpr<CR>", { desc = "Prev location" })
-vim.keymap.set("n", "<leader>cc", ":ll<CR>", { desc = "Curr location" })
-vim.keymap.set("n", "<leader>cq", ":lcl<CR>", { desc = "Curr location" })
-vim.keymap.set("n", "<leader>qn", ":cne<CR>", { desc = "Next Quickfix" })
-vim.keymap.set("n", "<leader>qp", ":cpr<CR>", { desc = "Prev Quickfix" })
-vim.keymap.set("n", "<leader>qc", ":cl<CR>", { desc = "Curr Quickfix" })
-vim.keymap.set("n", "<leader>qq", ":ccl<CR>", { desc = "Curr Quickfix" })
-vim.keymap.set(
-    "n",
-    "<leader>io",
-    vim.diagnostic.setloclist,
-    { desc = "Open diagnostic location list" }
-)
-vim.keymap.set("n", "<leader>iv", function()
-    if vim.g.diagnostics_visible then
-        vim.g.diagnostics_visible = false
-        vim.diagnostic.config({ virtual_text = false })
-    else
-        vim.g.diagnostics_visible = true
-        vim.diagnostic.config({ virtual_text = true })
-    end
-end, { desc = "Toggle diagnostics virtual text" })
 vim.keymap.set("n", "<leader>il", function()
     if vim.opt.colorcolumn["_value"] == "" then
         vim.opt.colorcolumn = "+2"
@@ -82,12 +45,6 @@ vim.keymap.set("n", "<leader>il", function()
         vim.opt.colorcolumn = ""
     end
 end, { desc = "Toggle linewrap guide" })
-vim.keymap.set("n", "<leader>in", vim.diagnostic.goto_next, { desc = "Jump to Next Diagnostic" })
-vim.keymap.set("n", "<leader>ip", vim.diagnostic.goto_prev, { desc = "Jump to Prev Diagnostic" })
-vim.keymap.set("n", "<leader>ii", vim.diagnostic.open_float, { desc = "Get curr diagnostic" })
-vim.keymap.set("n", "<leader>ie", function()
-    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end, { desc = "Toggle diagnostics" })
 vim.keymap.set("n", "<leader>ro", ":view<CR>", { desc = "Set file to read-only" })
 vim.keymap.set("n", "<leader>rw", ":edit<CR>", { desc = "Set file to read/write" })
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", { desc = "Open Mason window" })
@@ -103,6 +60,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Modular configuration
 require("config.window")
+require("config.diagnostic")
 
 -- Autoformatting and autowrapping
 vim.api.nvim_create_autocmd("FileType", {

@@ -97,6 +97,20 @@ return {
         init = function()
             vim.g.db_ui_use_nerd_fonts = 1
             vim.g.db_ui_execute_on_save = 0
+
+            local found = false
+            vim.keymap.set("n", "<leader>qd", function()
+                for i = 1, vim.fn.tabpagenr("$") do
+                    if vim.fn.TabooTabName(i) == "db" then
+                        vim.cmd("tabnext " .. i)
+                        found = true
+                    end
+                end
+                if not found then
+                    vim.cmd("TabooOpen db")
+                end
+                vim.cmd("DBUI")
+            end, { desc = "Launch DB-UI" })
         end,
     },
     {

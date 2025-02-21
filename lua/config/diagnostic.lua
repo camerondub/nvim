@@ -33,3 +33,4 @@ vim.keymap.set("n", "<leader>ii", vim.diagnostic.open_float, { desc = "Get curr 
 vim.keymap.set("n", "<leader>ie", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
+vim.keymap.set("n", "<leader>ic", vim.diagnostic.reset, { desc = "Clear diagnostics" })

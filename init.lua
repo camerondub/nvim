@@ -38,7 +38,7 @@ vim.keymap.set("n", "<C-j>", "<C-d>", { desc = "Scroll down half screen" })
 vim.keymap.set("n", "<C-k>", "<C-u>", { desc = "Scroll up half screen" })
 vim.keymap.set("n", "g;", ",", { desc = "Reverse char search" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-vim.keymap.set("n", "<leader>il", function()
+vim.keymap.set("n", "<leader>wt", function()
     if vim.opt.colorcolumn["_value"] == "" then
         vim.opt.colorcolumn = "+2"
     else

@@ -64,6 +64,9 @@ return {
             vim.g.taboo_renamed_tab_format = " %N %l "
             vim.g.taboo_tab_format = " %N %a "
         end,
+        config = function()
+            vim.cmd("TabooRename src")
+        end,
     },
     {
         "tpope/vim-fugitive",

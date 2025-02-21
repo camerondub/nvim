@@ -53,13 +53,6 @@ return {
     {
         "gcmt/taboo.vim", -- tab control
         lazy = false,
-        keys = {
-            { "<leader>to", ":TabooOpen<space>", desc = "Create new named tab" },
-            { "<leader>tn", ":tabn<CR>", desc = "Jump to next tab" },
-            { "<leader>tp", ":tabp<CR>", desc = "Jump to previous tab" },
-            { "<leader>tq", ":tabc<CR>", desc = "Close current tab" },
-            { "<leader>tr", ":TabooRename<space>", desc = "Rename current tab" },
-        },
         init = function()
             vim.g.taboo_renamed_tab_format = " %N %l "
             vim.g.taboo_tab_format = " %N %a "

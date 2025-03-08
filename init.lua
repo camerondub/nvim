@@ -94,17 +94,9 @@ end
 
 -- Configure plugins
 require("lazy").setup({
-    require("lazyplugin.find"),
-    require("lazyplugin.lsp"),
-    require("lazyplugin.complete"),
-    require("lazyplugin.lint"),
-    require("lazyplugin.treesitter"),
-    require("lazyplugin.format"),
-    require("lazyplugin.debug"),
-    require("lazyplugin.filetree"),
-    require("lazyplugin.hud"),
-    require("lazyplugin.style"),
-    require("lazyplugin.vi"),
+    spec = {
+    	{ import = "plugin" },
+    },
 }, {
     ui = {
         icons = {

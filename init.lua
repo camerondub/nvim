@@ -95,7 +95,7 @@ end
 -- Configure plugins
 require("lazy").setup({
     spec = {
-    	{ import = "plugin" },
+        { import = "plugin" },
     },
 }, {
     ui = {

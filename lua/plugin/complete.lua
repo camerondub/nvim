@@ -25,6 +25,10 @@ return {
                     end,
                 },
                 completion = { completeopt = "menu,menuone" },
+                window = {
+                    completion = cmp.config.window.bordered({ border = "single" }),
+                    documentation = cmp.config.window.bordered({ border = "single" }),
+                },
 
                 mapping = cmp.mapping.preset.insert({
                     ["<C-n>"] = cmp.mapping.select_next_item(),

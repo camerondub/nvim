@@ -26,22 +26,6 @@ return {
             },
             "nvim-neotest/nvim-nio",
             "williamboman/mason.nvim",
-            {
-                "microsoft/vscode-js-debug",
-                build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && "
-                    .. "mv dist out",
-            },
-            {
-                "mxsdev/nvim-dap-vscode-js",
-                config = function(_, _)
-                    ---@diagnostic disable-next-line: missing-fields
-                    require("dap-vscode-js").setup({
-                        debugger_path = vim.fn.resolve(
-                            vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"
-                        ),
-                    })
-                end,
-            },
         },
         keys = function(_, keys)
             local dap = require("dap")

@@ -58,7 +58,8 @@ return {
             vim.g.taboo_tab_format = " %N %a "
         end,
         config = function()
-            vim.cmd("TabooRename src")
+            local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+            vim.cmd("TabooRename " .. dir_name)
         end,
     },
     {

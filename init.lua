@@ -61,6 +61,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Modular configuration
 require("config.window")
 require("config.tab")
+require("config.buffer")
 require("config.diagnostic")
 
 -- Autoformatting and autowrapping

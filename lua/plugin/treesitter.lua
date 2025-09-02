@@ -21,7 +21,7 @@ return {
             highlight = {
                 enable = true,
             },
-            indent = { enable = true, disable = { "yaml" } },
+            indent = { enable = true, disable = { "yaml", "markdown" } },
         },
     },
 }

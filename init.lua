@@ -48,6 +48,8 @@ end, { desc = "Toggle linewrap guide" })
 vim.keymap.set("n", "<leader>ro", ":view<CR>", { desc = "Set file to read-only" })
 vim.keymap.set("n", "<leader>rw", ":edit<CR>", { desc = "Set file to read/write" })
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", { desc = "Open Mason window" })
+vim.keymap.set("n", "<leader>ef", ":echo expand('%:p')<CR>", { desc = "Echo full file path" })
+vim.keymap.set("n", "<leader>er", ":echo expand('%')<CR>", { desc = "Echo relative file path" })
 
 -- Autocommands
 vim.api.nvim_create_autocmd("TextYankPost", {

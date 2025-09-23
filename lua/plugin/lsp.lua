@@ -15,9 +15,8 @@ return {
     {
         "neovim/nvim-lspconfig", -- main LSP configuration
         dependencies = {
-            { "williamboman/mason.nvim", config = true }, -- lsp/tool installer
-            "williamboman/mason-lspconfig.nvim",
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
+            { "mason-org/mason.nvim", config = true }, -- lsp/tool installer
+            "mason-org/mason-lspconfig.nvim",
             { "j-hui/fidget.nvim", opts = {} }, -- useful status updates for LSP
             "hrsh7th/cmp-nvim-lsp", -- allows extra capabilities provided by nvim-cmp
         },
@@ -124,7 +123,20 @@ return {
 
             -- automatically install the following language servers
             local servers = {
-                pyright = {},
+                pyright = {
+                    settings = {
+                        python = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                diagnosticMode = "openFilesOnly",
+                                useLibraryCodeForTypes = true,
+                                diagnosticSeverityOverrides = {
+                                    reportPrivateImportUsage = "none",
+                                },
+                            },
+                        },
+                    },
+                },
 
                 lua_ls = {
                     settings = {
@@ -139,29 +151,15 @@ return {
 
             require("mason").setup()
 
-            local ensure_installed = vim.tbl_keys(servers or {})
-            vim.list_extend(ensure_installed, {
-                "black",
-                "isort",
-                "stylua",
-                "prettierd",
-            })
-            require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+            local server_names = vim.tbl_keys(servers or {})
 
             require("mason-lspconfig").setup({
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        server.capabilities = vim.tbl_deep_extend(
-                            "force",
-                            {},
-                            capabilities,
-                            server.capabilities or {}
-                        )
-                        require("lspconfig")[server_name].setup(server)
-                    end,
-                },
+                ensure_installed = server_names,
             })
+
+            for k, v in pairs(servers) do
+                vim.lsp.config(k, v)
+            end
         end,
     },
 }

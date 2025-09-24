@@ -9,17 +9,31 @@ return {
                 python = { "pylint" },
             }
 
+            vim.g.linting_enabled = true
+
             local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-            vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 group = lint_augroup,
                 callback = function()
-                    lint.try_lint()
+                    if vim.g.linting_enabled then
+                        lint.try_lint()
+                    end
                 end,
             })
+
             vim.keymap.set("n", "<leader>il", function()
-                lint.try_lint()
-                vim.notify("Kicked off linter process...")
-            end, { desc = "Perform linting" })
+                if vim.g.linting_enabled then
+                    vim.g.linting_enabled = false
+                    vim.diagnostic.reset()
+                    vim.notify("Disabled linting")
+                    return
+                else
+                    vim.g.linting_enabled = true
+                    lint.try_lint()
+                    vim.notify("Enabled linting")
+                end
+            end, { desc = "Toggle linting" })
+
             lint.linters.pylint.cmd = "python3"
             lint.linters.pylint.args = {
                 "-m",

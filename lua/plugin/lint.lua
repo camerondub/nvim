@@ -1,6 +1,18 @@
 return {
     {
-        "mfussenegger/nvim-lint", -- linting
+        "rshkarin/mason-nvim-lint",
+        dependencies = {
+            { "mason-org/mason.nvim" },
+            { "mfussenegger/nvim-lint" },
+        },
+        config = function()
+            require("mason-nvim-lint").setup({
+                ensure_installed = { "markdownlint", "pylint" },
+            })
+        end,
+    },
+    {
+        "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             local lint = require("lint")
@@ -33,26 +45,6 @@ return {
                     vim.notify("Enabled linting")
                 end
             end, { desc = "Toggle linting" })
-
-            lint.linters.pylint.cmd = "python3"
-            lint.linters.pylint.args = {
-                "-m",
-                "pylint",
-                "-f",
-                "json",
-                "--from-stdin",
-                "-j",
-                "8",
-                function()
-                    return vim.api.nvim_buf_get_name(0)
-                end,
-            }
         end,
-    },
-    {
-        "rshkarin/mason-nvim-lint",
-        opts = {
-            ensure_installed = { "markdownlint" },
-        },
     },
 }

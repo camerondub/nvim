@@ -17,7 +17,7 @@ vim.g.diagnostics_visible = true
 vim.diagnostic.config({
     virtual_text = vim.g.diagnostics_visible,
 })
-vim.keymap.set("n", "<leader>iv", function()
+vim.keymap.set("n", "<leader>iv;", function()
     vim.g.diagnostics_visible = not vim.g.diagnostics_visible
     vim.diagnostic.config({
         virtual_text = vim.g.diagnostics_visible,
@@ -33,7 +33,7 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>in", vim.diagnostic.goto_next, { desc = "Jump to Next Diagnostic" })
 vim.keymap.set("n", "<leader>ip", vim.diagnostic.goto_prev, { desc = "Jump to Prev Diagnostic" })
 vim.keymap.set("n", "<leader>ii", vim.diagnostic.open_float, { desc = "Get curr diagnostic" })
-vim.keymap.set("n", "<leader>ie", function()
+vim.keymap.set("n", "<leader>i;", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
 vim.keymap.set("n", "<leader>ic", vim.diagnostic.reset, { desc = "Clear diagnostics" })

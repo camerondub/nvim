@@ -14,6 +14,7 @@ vim.keymap.set("n", "<leader>wo", "<C-w>o", { desc = "Close all other windows" }
 vim.keymap.set("n", "<leader>wt", "<C-w>t", { desc = "Go to top window" })
 vim.keymap.set("n", "<leader>wb", "<C-w>b", { desc = "Go to bottom window" })
 vim.keymap.set("n", "<leader>wp", "<C-w>p", { desc = "Go to prev window" })
+vim.keymap.set("n", "<leader>w;", "<C-w>p", { desc = "Go to prev window" })
 vim.keymap.set("n", "<leader>w1", "1<C-w>w", { desc = "Go to 1st window" })
 vim.keymap.set("n", "<leader>w2", "2<C-w>w", { desc = "Go to 2nd window" })
 vim.keymap.set("n", "<leader>w3", "3<C-w>w", { desc = "Go to 3rd window" })

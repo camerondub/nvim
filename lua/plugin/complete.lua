@@ -15,6 +15,7 @@ return {
         lazy = false,
         config = function()
             local cmp = require("cmp")
+            local types = require("cmp.types")
             local luasnip = require("luasnip")
             luasnip.config.setup({})
 
@@ -24,7 +25,10 @@ return {
                         luasnip.lsp_expand(args.body)
                     end,
                 },
-                completion = { completeopt = "menu,menuone" },
+                completion = {
+                    completeopt = "menu,menuone",
+                    autocomplete = { types.cmp.TriggerEvent.TextChanged },
+                },
                 window = {
                     completion = cmp.config.window.bordered({ border = "single" }),
                     documentation = cmp.config.window.bordered({ border = "single" }),
@@ -62,17 +66,19 @@ return {
                     { name = "vim-dadbod-completion" },
                 }),
             })
-            local types = require("cmp.types")
-            vim.keymap.set("n", "<leader>pe", function()
-                cmp.setup({
-                    completion = { autocomplete = { types.cmp.TriggerEvent.TextChanged } },
-                })
-                print("Enabled autocompletion")
-            end, { desc = "Enable autocompletion" })
-            vim.keymap.set("n", "<leader>pd", function()
-                cmp.setup({ completion = { autocomplete = false } })
-                print("Disabled autocompletion")
-            end, { desc = "Disable autocompletion" })
+            vim.g.cmp_visible = true
+            vim.keymap.set("n", "<leader>p;", function()
+                if not vim.g.cmp_visible then
+                    cmp.setup({
+                        completion = { autocomplete = { types.cmp.TriggerEvent.TextChanged } },
+                    })
+                    print("Enabled autocompletion")
+                else
+                    cmp.setup({ completion = { autocomplete = false } })
+                    print("Disabled autocompletion")
+                end
+                vim.g.cmp_visible = not vim.g.cmp_visible
+            end, { desc = "Toggle autocompletion" })
         end,
     },
 }

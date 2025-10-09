@@ -132,6 +132,7 @@ return {
                                 useLibraryCodeForTypes = true,
                                 diagnosticSeverityOverrides = {
                                     reportPrivateImportUsage = "none",
+                                    reportOptionalMemberAccess = "none",
                                 },
                             },
                         },

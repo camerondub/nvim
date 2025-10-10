@@ -27,7 +27,7 @@ return {
                 },
                 completion = {
                     completeopt = "menu,menuone",
-                    autocomplete = { types.cmp.TriggerEvent.TextChanged },
+                    autocomplete = false,
                 },
                 window = {
                     completion = cmp.config.window.bordered({ border = "single" }),

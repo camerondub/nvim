@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>wb", "<C-w>b", { desc = "Go to bottom window" })
 vim.keymap.set("n", "<leader>wp", "<C-w>p", { desc = "Go to prev window" })
 vim.keymap.set("n", "<leader>w;", "<C-w>p", { desc = "Go to prev window" })
 vim.keymap.set("n", "<C-Space>", function()
-    vim.cmd("wincmd p")
+    vim.cmd("wincmd w")
     if vim.bo.buftype == "terminal" then
         vim.cmd("startinsert")
     end

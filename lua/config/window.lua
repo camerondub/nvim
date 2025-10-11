@@ -19,7 +19,7 @@ vim.keymap.set("n", "<C-Space>", function()
     if vim.bo.buftype == "terminal" then
         vim.cmd("startinsert")
     end
-end, { desc = "Go to prev window" })
+end, { desc = "Go to next window" })
 vim.keymap.set("n", "<leader>w1", "1<C-w>w", { desc = "Go to 1st window" })
 vim.keymap.set("n", "<leader>w2", "2<C-w>w", { desc = "Go to 2nd window" })
 vim.keymap.set("n", "<leader>w3", "3<C-w>w", { desc = "Go to 3rd window" })
@@ -41,4 +41,4 @@ vim.keymap.set("n", "<leader>qc", ":cc<CR>", { desc = "Curr Quickfix" })
 vim.keymap.set("n", "<leader>qq", ":ccl<CR>", { desc = "Curr Quickfix" })
 
 -- terminal window
-vim.keymap.set("t", "<C-Space>", [[<C-\><C-n><C-w>p]], { noremap = true, silent = true })
+vim.keymap.set("t", "<C-Space>", [[<C-\><C-n><C-w>w]], { noremap = true, silent = true })

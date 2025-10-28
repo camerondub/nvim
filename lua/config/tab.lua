@@ -22,8 +22,8 @@ local function jump_or_create_tab(name, cmd)
     end
     if not found then
         vim.cmd("TabooOpen " .. name)
+        vim.cmd(cmd)
     end
-    vim.cmd(cmd)
 end
 
 -- Terminal tab
@@ -46,10 +46,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 vim.keymap.set("n", "<leader>tt", function()
-    jump_or_create_tab("term", "terminal")
+    jump_or_create_tab(">term", "terminal")
 end, { desc = "Open new terminal tab" })
 
 -- DBUI tab
 vim.keymap.set("n", "<leader>td", function()
-    jump_or_create_tab("db", "DBUI")
+    jump_or_create_tab(">db", "DBUI")
 end, { desc = "Open or jump to DB tab" })

@@ -42,3 +42,7 @@ vim.keymap.set("n", "<leader>qq", ":ccl<CR>", { desc = "Curr Quickfix" })
 
 -- terminal window
 vim.keymap.set("t", "<C-Space>", [[<C-\><C-n><C-w>w]], { noremap = true, silent = true })
+
+-- note window
+vim.keymap.set("n", "<leader>en", ":e .note.yml<CR>", { desc = "Edit local note file" })
+vim.keymap.set("n", "<leader>ee", ":e .env<CR>", { desc = "Edit local env file" })

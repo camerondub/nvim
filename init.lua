@@ -72,6 +72,13 @@ vim.api.nvim_create_autocmd("FileType", {
     command = "setlocal formatoptions=tcqln",
 })
 
+-- Additional file extension types
+vim.filetype.add({
+    extension = {
+        sshconfig = "sshconfig",
+    },
+})
+
 -- Install plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

@@ -73,7 +73,7 @@ end
 
 -- Map Ctrl+Space in all modes
 local opts = { silent = true, desc = "Next window (term-aware)" }
-vim.keymap.set({ "n", "t" }, "<C-Space>", next_window_smart, opts)
+vim.keymap.set({ "n", "t", "v" }, "<C-Space>", next_window_smart, opts)
 opts = { silent = true, desc = "Prev window (term-aware)" }
 -- note; on windows, you need to press shift+alt+space for this to work
-vim.keymap.set({ "n", "t" }, "<A-Space>", prev_window_smart, opts)
+vim.keymap.set({ "n", "t", "v" }, "<A-Space>", prev_window_smart, opts)

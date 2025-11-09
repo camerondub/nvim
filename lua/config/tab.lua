@@ -91,12 +91,12 @@ vim.keymap.set(
     { "n", "t", "i" },
     "<C-g>",
     next_tab_smart,
-    { silent = true, desc = "Next tab; re-enter insert if terminal" }
+    { silent = true, desc = "Next tab (term-aware)" }
 )
 
 vim.keymap.set(
     { "n", "t", "i" },
     "<A-g>",
     prev_tab_smart,
-    { silent = true, desc = "Prev tab; re-enter insert if terminal" }
+    { silent = true, desc = "Prev tab (term-aware)" }
 )

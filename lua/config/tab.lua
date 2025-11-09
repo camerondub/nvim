@@ -53,3 +53,50 @@ end, { desc = "Open new terminal tab" })
 vim.keymap.set("n", "<leader>td", function()
     jump_or_create_tab(">db", "DBUI")
 end, { desc = "Open or jump to DB tab" })
+
+-- Map Ctrl-G to advance tab in any mode
+local function reenter_if_terminal()
+    local buf = vim.api.nvim_get_current_buf()
+    if vim.bo[buf].buftype == "terminal" then
+        vim.cmd("startinsert")
+    end
+end
+
+local function next_tab_smart()
+    if vim.fn.mode() == "t" then
+        -- In terminal-insert: send the whole key sequence as real input
+        local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n>gt", true, false, true)
+        vim.api.nvim_feedkeys(keys, "n", false)
+        -- Defer the reinsert check until after the jump happens
+        vim.schedule(reenter_if_terminal)
+    else
+        -- Not in terminal-insert: safe to use Ex/normal commands
+        vim.cmd("tabnext") -- or: vim.cmd("normal! gt")
+        reenter_if_terminal()
+    end
+end
+
+local function prev_tab_smart()
+    if vim.fn.mode() == "t" then
+        local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n>gT", true, false, true)
+        vim.api.nvim_feedkeys(keys, "n", false)
+        vim.schedule(reenter_if_terminal)
+    else
+        vim.cmd("tabprevious") -- or: vim.cmd("normal! gT")
+        reenter_if_terminal()
+    end
+end
+
+vim.keymap.set(
+    { "n", "t", "i" },
+    "<C-g>",
+    next_tab_smart,
+    { silent = true, desc = "Next tab; re-enter insert if terminal" }
+)
+
+vim.keymap.set(
+    { "n", "t", "i" },
+    "<A-g>",
+    prev_tab_smart,
+    { silent = true, desc = "Prev tab; re-enter insert if terminal" }
+)

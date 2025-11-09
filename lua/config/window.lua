@@ -60,7 +60,20 @@ local function next_window_smart()
     end
 end
 
-local opts = { silent = true, desc = "Next window (terminal-aware), Ctrl+Space" }
+local function prev_window_smart()
+    if vim.fn.mode() == "t" then
+        local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n><C-w>W", true, false, true)
+        vim.api.nvim_feedkeys(keys, "n", false)
+        vim.schedule(reenter_if_terminal)
+    else
+        vim.cmd("wincmd W")
+        reenter_if_terminal()
+    end
+end
 
 -- Map Ctrl+Space in all modes
+local opts = { silent = true, desc = "Next window (term-aware)" }
 vim.keymap.set({ "n", "t" }, "<C-Space>", next_window_smart, opts)
+opts = { silent = true, desc = "Prev window (term-aware)" }
+-- note; on windows, you need to press shift+alt+space for this to work
+vim.keymap.set({ "n", "t" }, "<A-Space>", prev_window_smart, opts)

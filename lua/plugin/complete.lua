@@ -18,6 +18,7 @@ return {
             local types = require("cmp.types")
             local luasnip = require("luasnip")
             luasnip.config.setup({})
+            require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
             cmp.setup({
                 snippet = {

@@ -23,6 +23,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.swapfile = false
+vim.opt.scrollback = 100000
 
 vim.g.yaml_indent_multiline_scalar = 1 -- fix autoindent for multiline yaml scalars
 
